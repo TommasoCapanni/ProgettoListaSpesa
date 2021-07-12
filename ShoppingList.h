@@ -20,6 +20,8 @@ public:
 
     std::string getName() { return name; }
 
+    std::map<std::string, int> getList() { return shopList; }
+
 private:
     std::string name;
     std::map<std::string, int> shopList;
