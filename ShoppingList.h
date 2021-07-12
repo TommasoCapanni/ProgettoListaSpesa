@@ -18,6 +18,8 @@ public:
 
     bool findItem(Articolo ar);
 
+    std::string getName() { return name; }
+
 private:
     std::string name;
     std::map<std::string, int> shopList;
