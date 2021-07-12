@@ -22,11 +22,7 @@ public:
         }
     }
 
-    void notify() {
-        for (auto &i : obs) {
-            i->update(*this);
-        }
-    }
+    virtual void notify() = 0;
 
 protected:
     std::vector<Observer *> obs;

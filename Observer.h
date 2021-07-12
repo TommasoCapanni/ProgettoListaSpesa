@@ -5,13 +5,13 @@
 #ifndef PROGETTOLISTASPESA_OBSERVER_H
 #define PROGETTOLISTASPESA_OBSERVER_H
 
-class Subject;
+class ShoppingList;
 
 class Observer {
 public:
     virtual ~Observer() = default;
 
-    virtual void update(Subject &) = 0;
+    virtual void update(const ShoppingList &sl) = 0;
 };
 
 

@@ -25,9 +25,15 @@ public:
 
     bool findItem(Articolo ar);
 
-    std::string getName() { return name; }
+    std::string getName() const { return name; }
 
-    std::map<std::string, int> getList() { return shopList; }
+    std::map<std::string, int> getList() const { return shopList; }
+
+    void notify() override;
+
+    void operator=(const std::map<std::string, int> &sl) {
+        this->shopList = sl;
+    }
 
 private:
     std::string name;

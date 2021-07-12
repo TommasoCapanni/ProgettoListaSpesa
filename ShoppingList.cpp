@@ -30,3 +30,9 @@ bool ShoppingList::findItem(Articolo ar) {
     return false;
 
 }
+
+void ShoppingList::notify() {
+    for (auto &i : obs) {
+        i->update(*this);
+    }
+}
