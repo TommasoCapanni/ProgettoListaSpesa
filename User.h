@@ -6,7 +6,6 @@
 #define PROGETTOLISTASPESA_USER_H
 
 #include "ShoppingList.h"
-#include <vector>
 
 class User {
 public:

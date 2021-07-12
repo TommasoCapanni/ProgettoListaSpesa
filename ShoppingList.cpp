@@ -10,12 +10,14 @@ void ShoppingList::addItem(Articolo ar, int i) {
         shopList[ar.getName()] += i;
     } else
         shopList.insert({ar.getName(), i});
+    notify();
 }
 
 void ShoppingList::removeItem(Articolo ar) {
     auto itr = shopList.find(ar.getName());
     if (itr != shopList.end()) {
         shopList[ar.getName()] -= 1;
+        notify();
         if (shopList[ar.getName()] == 0)
             shopList.erase(ar.getName());
     }

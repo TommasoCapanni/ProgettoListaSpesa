@@ -6,11 +6,18 @@
 #define PROGETTOLISTASPESA_SHOPPINGLIST_H
 
 #include "Articolo.h"
+#include "Subject.h"
 #include <map>
 
-class ShoppingList {
+class ShoppingList : public Subject {
 public:
-    ShoppingList(std::string name) : name(name) {};
+    explicit ShoppingList(std::string name) : name(name) {};
+
+    ~ShoppingList() override {
+        for (auto &i : obs) {
+            delete i;
+        }
+    }
 
     void addItem(Articolo ar, int i = 1);
 
