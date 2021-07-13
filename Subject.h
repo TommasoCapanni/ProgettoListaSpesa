@@ -7,25 +7,21 @@
 
 #include <vector>
 #include <algorithm>
+#include <list>
+#include <map>
+#include <iostream>
 #include "Observer.h"
 
 class Subject {
 public:
     virtual ~Subject() = 0;
 
-    void attach(Observer &o) { obs.push_back(&o); }
+    virtual void attach(Observer *o) = 0;
 
-    void detach(Observer &o) {
-        auto itr = std::find(begin(obs), end(obs), &o);
-        if (itr != obs.end()) {
-            obs.erase(itr);
-        }
-    }
+    virtual void detach(Observer *o) = 0;
 
-    virtual void notify() = 0;
+    virtual void notify() const = 0;
 
-protected:
-    std::vector<Observer *> obs;
 };
 
 inline Subject::~Subject() {}

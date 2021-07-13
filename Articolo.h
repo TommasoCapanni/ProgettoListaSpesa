@@ -5,7 +5,6 @@
 #ifndef PROGETTOLISTASPESA_ARTICOLO_H
 #define PROGETTOLISTASPESA_ARTICOLO_H
 
-#include <string>
 
 class Articolo {
 public:

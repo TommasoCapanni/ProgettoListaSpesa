@@ -11,13 +11,27 @@ class User {
 public:
     User(std::string name) : name(name) {};
 
-    void addList(ShoppingList sl);
+    void addList(ShoppingList *sl);
 
-    std::vector<ShoppingList> getLists() { return shopLists; }
+    std::vector<ShoppingList *> getLists() { return shopLists; }
+
+    void subscribe(Observer *o) {
+        for (auto &i : shopLists) {
+            i->attach(o);
+        }
+    }
+
+    void unsubscribe(Observer *o) {
+        for (auto &i : shopLists) {
+            i->detach(o);
+        }
+    }
+
+    std::string getName() { return name; }
 
 private:
     std::string name;
-    std::vector<ShoppingList> shopLists;
+    std::vector<ShoppingList *> shopLists;
 };
 
 

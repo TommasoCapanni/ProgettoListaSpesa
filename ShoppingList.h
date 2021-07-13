@@ -5,19 +5,13 @@
 #ifndef PROGETTOLISTASPESA_SHOPPINGLIST_H
 #define PROGETTOLISTASPESA_SHOPPINGLIST_H
 
-#include "Articolo.h"
+
 #include "Subject.h"
-#include <map>
+#include "Articolo.h"
 
 class ShoppingList : public Subject {
 public:
     explicit ShoppingList(std::string name) : name(name) {};
-
-    ~ShoppingList() override {
-        for (auto &i : obs) {
-            delete i;
-        }
-    }
 
     void addItem(Articolo ar, int i = 1);
 
@@ -35,9 +29,24 @@ public:
         this->shopList = sl;
     }
 
+    void attach(Observer *o) { obs.push_back(o); }
+
+    void detach(Observer *o) { obs.remove(o); }
+
+    void notify() const {
+        for (auto &i : obs) {
+            i->update((Subject *) this);
+        }
+    }
+
+    void subscribe(Observer *o) {
+        attach(o);
+    }
+
 private:
     std::string name;
     std::map<std::string, int> shopList;
+    std::list<Observer *> obs;
 };
 
 
