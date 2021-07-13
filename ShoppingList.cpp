@@ -28,11 +28,4 @@ bool ShoppingList::findItem(Articolo ar) {
     if (itr != shopList.end())
         return true;
     return false;
-
-}
-
-void ShoppingList::notify() {
-    for (auto &i : obs) {
-        i->update(*this);
-    }
 }

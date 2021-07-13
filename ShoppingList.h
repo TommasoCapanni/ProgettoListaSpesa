@@ -23,12 +23,6 @@ public:
 
     std::map<std::string, int> getList() const { return shopList; }
 
-    void notify() override;
-
-    void operator=(const std::map<std::string, int> &sl) {
-        this->shopList = sl;
-    }
-
     void attach(Observer *o) { obs.push_back(o); }
 
     void detach(Observer *o) { obs.remove(o); }
