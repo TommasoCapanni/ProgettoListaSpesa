@@ -18,7 +18,6 @@ public:
 
     ~Display() {
         user->unsubscribe((Observer *) this);
-        delete user;
     }
 
     void update(Subject *shopList) {
