@@ -20,7 +20,7 @@ public:
         user->unsubscribe((Observer *) this);
     }
 
-    void update(Subject *shopList) {
+    void update(const Subject *shopList) {
         ShoppingList *ptr = dynamic_cast<ShoppingList *>(shopList);
         for (auto &i : lists) {
             if (i.getName() == ptr->getName()) {
@@ -29,7 +29,7 @@ public:
         }
     }
 
-    void display() {
+    void display() const {
         std::cout << "Liste utente: " << user->getName() << std::endl;
         for (auto &i : lists) {
             std::cout << "-" << i.getName() << std::endl;

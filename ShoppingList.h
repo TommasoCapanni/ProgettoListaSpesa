@@ -13,11 +13,11 @@ class ShoppingList : public Subject {
 public:
     explicit ShoppingList(std::string name) : name(name) {};
 
-    void addItem(Articolo ar, int i = 1);
+    void addItem(const Articolo ar, int i = 1);
 
-    void removeItem(Articolo ar);
+    void removeItem(const Articolo ar);
 
-    bool findItem(Articolo ar);
+    bool findItem(const Articolo ar) const;
 
     std::string getName() const { return name; }
 

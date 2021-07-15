@@ -14,7 +14,7 @@
 
 class Subject {
 public:
-    virtual ~Subject() = 0;
+    virtual ~Subject() = default;
 
     virtual void attach(Observer *o) = 0;
 
@@ -23,7 +23,5 @@ public:
     virtual void notify() const = 0;
 
 };
-
-inline Subject::~Subject() {}
 
 #endif //PROGETTOLISTASPESA_SUBJECT_H

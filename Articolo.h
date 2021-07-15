@@ -10,7 +10,7 @@ class Articolo {
 public:
     Articolo(std::string name) : name(name) {};
 
-    std::string getName() { return name; }
+    std::string getName() const { return name; }
 
 private:
     std::string name;

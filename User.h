@@ -13,7 +13,7 @@ public:
 
     void addList(ShoppingList *sl);
 
-    std::vector<ShoppingList *> getLists() { return shopLists; }
+    std::vector<ShoppingList *> getLists() const { return shopLists; }
 
     void subscribe(Observer *o) {
         for (auto &i : shopLists) {
@@ -27,7 +27,7 @@ public:
         }
     }
 
-    std::string getName() { return name; }
+    std::string getName() const { return name; }
 
 private:
     std::string name;
