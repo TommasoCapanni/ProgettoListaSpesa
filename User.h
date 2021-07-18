@@ -11,9 +11,9 @@ class User {
 public:
     User(std::string name) : name(name) {};
 
-    void addList(ShoppingList *sl);
+    void addList(std::shared_ptr<ShoppingList> sl);
 
-    std::vector<ShoppingList *> getLists() const { return shopLists; }
+    std::vector<std::shared_ptr<ShoppingList>> getLists() const { return shopLists; }
 
     void subscribe(Observer *o) {
         for (auto &i : shopLists) {
@@ -31,7 +31,7 @@ public:
 
 private:
     std::string name;
-    std::vector<ShoppingList *> shopLists;
+    std::vector<std::shared_ptr<ShoppingList>> shopLists;
 };
 
 

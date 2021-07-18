@@ -5,7 +5,7 @@
 #ifndef PROGETTOLISTASPESA_SHOPPINGLIST_H
 #define PROGETTOLISTASPESA_SHOPPINGLIST_H
 
-
+#include <memory>
 #include "Subject.h"
 #include "Articolo.h"
 

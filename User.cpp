@@ -4,6 +4,6 @@
 
 #include "User.h"
 
-void User::addList(ShoppingList *sl) {
+void User::addList(std::shared_ptr<ShoppingList> sl) {
     shopLists.push_back(sl);
 }
