@@ -31,3 +31,15 @@ bool ShoppingList::findItem(const Articolo &ar) const {
         return true;
     return false;
 }
+
+void ShoppingList::toggleCheckItem(const Articolo &ar) {
+    auto itr = shopList.find(ar.getName());
+    if (itr != shopList.end())
+        for (auto it = 0; it < checkList.size(); it++) {
+            if (checkList[it] == ar.getName()) {
+                checkList.erase(checkList.begin() + it);
+                return;
+            }
+        }
+    checkList.push_back(ar.getName());
+}

@@ -20,6 +20,8 @@ public:
 
     bool findItem(const Articolo &ar) const;
 
+    void toggleCheckItem(const Articolo &ar);
+
     std::string getName() const { return name; }
 
     std::map<std::string, int> getList() const { return shopList; }
@@ -42,6 +44,7 @@ private:
     std::string name;
     std::map<std::string, int> shopList;
     std::list<Observer *> obs;
+    std::vector<std::string> checkList;
 };
 
 
