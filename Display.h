@@ -39,19 +39,20 @@ public:
                 std::cout << std::endl;
             }
         }
-}
-
-void display(ShoppingList list) const {
-    std::map<std::string, int> temp = list.getList();
-    std::cout << "Lista " << list.getName() << std::endl;
-    std::cout << "-" << user->getName() << std::endl;
-    for (auto &i : temp) {
-        std::cout << "--" << i.first << " - " << std::to_string(i.second) << std::endl;
     }
-}
+
+    void display(ShoppingList list) const {
+        std::map<std::string, int> temp = list.getList();
+        std::cout << "Lista " << list.getName() << std::endl;
+        std::cout << "-" << user->getName() << std::endl;
+        for (auto &i : temp) {
+            std::cout << "--" << i.first << " - " << std::to_string(i.second) << std::endl;
+        }
+    }
+
 
 private:
-User *user;
+    User *user;
 };
 
 #endif //PROGETTOLISTASPESA_DISPLAY_H
