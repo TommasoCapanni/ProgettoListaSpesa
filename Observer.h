@@ -12,7 +12,7 @@ class Observer {
 public:
     virtual ~Observer() = default;
 
-    virtual void update(const Subject *shopList) = 0;
+    virtual void update(Subject *shopList) = 0;
 };
 
 

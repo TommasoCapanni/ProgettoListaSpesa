@@ -17,7 +17,7 @@ public:
         user->unsubscribe((Observer *) this);
     }
 
-    void update(const Subject *shopList) {
+    void update(Subject *shopList) {
         ShoppingList *ptr = dynamic_cast<ShoppingList *>(shopList);
         display(*ptr);
     }
@@ -32,10 +32,11 @@ public:
                 std::cout << "--" << j.first << " - " << std::to_string(j.second);
                 for (auto &k : temp) {
                     if (k == j.first) {
-                        std::cout << " x" << std::endl;
+                        std::cout << " x";
                         break;
                     }
                 }
+                std::cout << std::endl;
             }
         }
 }
