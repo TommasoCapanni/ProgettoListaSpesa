@@ -11,8 +11,6 @@ class Display : public Observer {
 public:
     Display(User *u) : user(u) {
         u->subscribe(this);
-        for (auto &i : u->getLists()) {
-            lists.push_back(*i);
         }
     };
 
@@ -22,26 +20,32 @@ public:
 
     void update(const Subject *shopList) {
         ShoppingList *ptr = dynamic_cast<ShoppingList *>(shopList);
-        for (auto &i : lists) {
-            if (i.getName() == ptr->getName()) {
-                i = *ptr;
+        display(*ptr);
             }
         }
     }
 
-    void display() const {
-        std::cout << "Liste utente: " << user->getName() << std::endl;
-        for (auto &i : lists) {
-            std::cout << "-" << i.getName() << std::endl;
-            for (auto &j : i.getList()) {
-                std::cout << "--" << j.first << " - " << std::to_string(j.second) << std::endl;
-            }
+void display() const {
+    std::cout << "Liste utente: " << user->getName() << std::endl;
+    for (auto &i : user->getLists()) {
+        std::cout << "-" << i->getName() << std::endl;
+        for (auto &j : i->getList()) {
+            std::cout << "--" << j.first << " - " << std::to_string(j.second) << std::endl;
         }
     }
+}
+
+void display(ShoppingList list) const {
+    std::map<std::string, int> temp = list.getList();
+    std::cout << "Lista " << list.getName() << std::endl;
+    std::cout << "-" << user->getName() << std::endl;
+    for (auto &i : temp) {
+        std::cout << "--" << i.first << " - " << std::to_string(i.second) << std::endl;
+    }
+}
 
 private:
-    User *user;
-    std::vector<ShoppingList> lists;
+User *user;
 };
 
 #endif //PROGETTOLISTASPESA_DISPLAY_H
