@@ -29,11 +29,6 @@ TEST(ShoppingList, removeItem) {
     ASSERT_EQ(false, sl1.findItem(ar1));
 }
 
-TEST(ShoppingList, getName) {
-    ShoppingList sl1("Lista Prova 1");
-    ASSERT_EQ("Lista Prova 1", sl1.getName());
-}
-
 TEST(ShoppingList, NegativeNumberException) {
     ShoppingList sl1("Lista prova");
     Articolo ar1("Articolo di prova", "Categoria 1");
