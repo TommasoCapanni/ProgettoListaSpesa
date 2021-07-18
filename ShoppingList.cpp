@@ -4,7 +4,7 @@
 
 #include "ShoppingList.h"
 
-void ShoppingList::addItem(const Articolo ar, int i) {
+void ShoppingList::addItem(const Articolo &ar, int i) {
     auto itr = shopList.find(ar.getName());
     if (itr != shopList.end()) {
         shopList[ar.getName()] += i;
@@ -13,7 +13,7 @@ void ShoppingList::addItem(const Articolo ar, int i) {
     notify();
 }
 
-void ShoppingList::removeItem(const Articolo ar) {
+void ShoppingList::removeItem(const Articolo &ar) {
     auto itr = shopList.find(ar.getName());
     if (itr != shopList.end()) {
         shopList[ar.getName()] -= 1;
@@ -23,7 +23,7 @@ void ShoppingList::removeItem(const Articolo ar) {
     }
 }
 
-bool ShoppingList::findItem(Articolo ar) const {
+bool ShoppingList::findItem(const Articolo &ar) const {
     auto itr = shopList.find(ar.getName());
     if (itr != shopList.end())
         return true;
