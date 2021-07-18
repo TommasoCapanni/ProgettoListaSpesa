@@ -11,8 +11,7 @@ class Display : public Observer {
 public:
     Display(User *u) : user(u) {
         u->subscribe(this);
-        }
-    };
+    }
 
     ~Display() {
         user->unsubscribe((Observer *) this);
@@ -21,18 +20,17 @@ public:
     void update(const Subject *shopList) {
         ShoppingList *ptr = dynamic_cast<ShoppingList *>(shopList);
         display(*ptr);
-            }
-        }
     }
 
-void display() const {
-    std::cout << "Liste utente: " << user->getName() << std::endl;
-    for (auto &i : user->getLists()) {
-        std::cout << "-" << i->getName() << std::endl;
-        for (auto &j : i->getList()) {
-            std::cout << "--" << j.first << " - " << std::to_string(j.second) << std::endl;
+
+    void display() const {
+        std::cout << "Liste utente: " << user->getName() << std::endl;
+        for (auto &i : user->getLists()) {
+            std::cout << "-" << i->getName() << std::endl;
+            for (auto &j : i->getList()) {
+                std::cout << "--" << j.first << " - " << std::to_string(j.second) << std::endl;
+            }
         }
-    }
 }
 
 void display(ShoppingList list) const {
