@@ -5,6 +5,8 @@
 #include "ShoppingList.h"
 
 void ShoppingList::addItem(const Articolo &ar, int i) {
+    if (i < 0)
+        throw NegativeNumberException("Errore: il numero è negativo");
     auto itr = shopList.find(ar.getName());
     if (itr != shopList.end()) {
         shopList[ar.getName()] += i;

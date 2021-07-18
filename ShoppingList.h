@@ -8,6 +8,7 @@
 #include <memory>
 #include "Subject.h"
 #include "Articolo.h"
+#include "NegativeNumberException.h"
 
 class ShoppingList : public Subject {
 public:
