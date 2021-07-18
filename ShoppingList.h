@@ -26,6 +26,8 @@ public:
 
     std::map<std::string, int> getList() const { return shopList; }
 
+    std::vector<std::string> getChecks() const { return checkList; }
+
     void attach(Observer *o) { obs.push_back(o); }
 
     void detach(Observer *o) { obs.remove(o); }
