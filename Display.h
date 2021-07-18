@@ -26,9 +26,16 @@ public:
     void display() const {
         std::cout << "Liste utente: " << user->getName() << std::endl;
         for (auto &i : user->getLists()) {
+            std::vector<std::string> temp = i->getChecks();
             std::cout << "-" << i->getName() << std::endl;
             for (auto &j : i->getList()) {
-                std::cout << "--" << j.first << " - " << std::to_string(j.second) << std::endl;
+                std::cout << "--" << j.first << " - " << std::to_string(j.second);
+                for (auto &k : temp) {
+                    if (k == j.first) {
+                        std::cout << " x" << std::endl;
+                        break;
+                    }
+                }
             }
         }
 }
