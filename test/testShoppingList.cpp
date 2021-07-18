@@ -13,8 +13,8 @@ TEST(ShoppingList, Constructor) {
 
 TEST(ShoppingList, FindItem) {
     ShoppingList sl1("Lista prova 1");
-    Articolo ar1("Articolo nella lista");
-    Articolo ar2("Aricolo non nella lista");
+    Articolo ar1("Articolo nella lista", "Categoria 1");
+    Articolo ar2("Aricolo non nella lista", "Categoria 1");
     sl1.addItem(ar1, 1);
     ASSERT_EQ(true, sl1.findItem(ar1));
     ASSERT_EQ(false, sl1.findItem(ar2));
@@ -22,7 +22,7 @@ TEST(ShoppingList, FindItem) {
 
 TEST(ShoppingList, removeItem) {
     ShoppingList sl1("Lista prova");
-    Articolo ar1("Articolo di prova");
+    Articolo ar1("Articolo di prova", "Categoria 1");
     sl1.addItem(ar1);
     sl1.removeItem(ar1);
     ASSERT_EQ(false, sl1.findItem(ar1));
