@@ -42,11 +42,19 @@ public:
     }
 
     void display(ShoppingList list) const {
-        std::map<std::string, int> temp = list.getList();
+        std::map<std::string, int> shList = list.getList();
+        std::vector<std::string> chList = list.getChecks();
         std::cout << "Lista " << list.getName() << std::endl;
         std::cout << "-" << user->getName() << std::endl;
-        for (auto &i : temp) {
-            std::cout << "--" << i.first << " - " << std::to_string(i.second) << std::endl;
+        for (auto &i : shList) {
+            std::cout << "--" << i.first << " - " << std::to_string(i.second);
+            for (auto &j : chList) {
+                if (j == i.first) {
+                    std::cout << " x";
+                    break;
+                }
+            }
+            std::cout << std::endl;
         }
     }
 
