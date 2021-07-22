@@ -52,6 +52,23 @@ public:
         }
     }
 
+    void display(std::string category) const {
+        std::cout << "Liste utente: " << user->getName() << std::endl;
+        for (auto &i : user->getLists()) {
+            std::map<std::string, Articolo> chList = i->getArticleList();
+            std::cout << "-" << i->getName() << std::endl;
+            for (auto &j : i->getList()) {
+                auto artItr = chList.find(j.first);
+                if (artItr->second.getCategory() == category) {
+                    std::cout << "--" << j.first << " - " << std::to_string(j.second);
+                    if (artItr->second.getCheck())
+                        std::cout << " x";
+                    std::cout << std::endl;
+                }
+            }
+        }
+    }
+
 
 private:
     User *user;
