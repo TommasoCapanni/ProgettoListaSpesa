@@ -38,9 +38,6 @@ public:
         }
     }
 
-    void subscribe(Observer *o) {
-        attach(o);
-    }
 
 private:
     std::string name;
