@@ -26,16 +26,13 @@ public:
     void display() const {
         std::cout << "Liste utente: " << user->getName() << std::endl;
         for (auto &i : user->getLists()) {
-            std::vector<std::string> temp = i->getChecks();
+            std::map<std::string, Articolo> chList = i->getArticleList();
             std::cout << "-" << i->getName() << std::endl;
             for (auto &j : i->getList()) {
                 std::cout << "--" << j.first << " - " << std::to_string(j.second);
-                for (auto &k : temp) {
-                    if (k == j.first) {
-                        std::cout << " x";
-                        break;
-                    }
-                }
+                auto artItr = chList.find(j.first);
+                if (artItr->second.getCheck())
+                    std::cout << " x";
                 std::cout << std::endl;
             }
         }
@@ -43,17 +40,14 @@ public:
 
     void display(ShoppingList list) const {
         std::map<std::string, int> shList = list.getList();
-        std::vector<std::string> chList = list.getChecks();
+        std::map<std::string, Articolo> chList = list.getArticleList();
         std::cout << "Lista " << list.getName() << std::endl;
         std::cout << "-" << user->getName() << std::endl;
         for (auto &i : shList) {
             std::cout << "--" << i.first << " - " << std::to_string(i.second);
-            for (auto &j : chList) {
-                if (j == i.first) {
-                    std::cout << " x";
-                    break;
-                }
-            }
+            auto artItr = chList.find(i.first);
+            if (artItr->second.getCheck())
+                std::cout << " x";
             std::cout << std::endl;
         }
     }

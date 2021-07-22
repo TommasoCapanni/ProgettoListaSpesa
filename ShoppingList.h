@@ -26,7 +26,7 @@ public:
 
     std::map<std::string, int> getList() const { return shopList; }
 
-    std::vector<std::string> getChecks() const { return checkList; }
+    std::map<std::string, Articolo> getArticleList() const { return artList; }
 
     void attach(Observer *o) { obs.push_back(o); }
 
@@ -43,7 +43,7 @@ private:
     std::string name;
     std::map<std::string, int> shopList;
     std::list<Observer *> obs;
-    std::vector<std::string> checkList;
+    std::map<std::string, Articolo> artList;
 };
 
 
