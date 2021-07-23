@@ -34,3 +34,68 @@ TEST(ShoppingList, NegativeNumberException) {
     Articolo ar1("Articolo di prova", "Categoria 1");
     ASSERT_THROW(sl1.addItem(ar1, -1), NegativeNumberException);
 }
+
+TEST(ShoppingList, getListSize) {
+    ShoppingList sl1("Lista prova");
+    Articolo ar1("Articolo di prova 1", "Categoria 1");
+    Articolo ar2("Articolo di prova 2", "Categoria 1");
+    Articolo ar3("Articolo di prova 3", "Categoria 1");
+
+    sl1.addItem(ar1);
+
+    ASSERT_EQ(1, sl1.getListSize());
+
+    sl1.toggleCheckItem(ar1);
+    sl1.addItem(ar2);
+    sl1.addItem(ar1);
+
+    ASSERT_EQ(2, sl1.getListSize());
+
+    sl1.toggleCheckItem(ar1);
+
+    ASSERT_EQ(2, sl1.getListSize());
+
+    sl1.removeItem(ar1);
+
+    ASSERT_EQ(2, sl1.getListSize());
+
+    sl1.addItem(ar3);
+    sl1.removeItem(ar1);
+
+    ASSERT_EQ(2, sl1.getListSize());
+
+    sl1.removeItem(ar2);
+    sl1.removeItem(ar3);
+    ASSERT_EQ(0, sl1.getListSize());
+}
+
+TEST(ShoppingList, getBoughtItemsNumber) {
+    ShoppingList sl1("Lista prova");
+    Articolo ar1("Articolo di prova 1", "Categoria 1");
+    Articolo ar2("Articolo di prova 2", "Categoria 1");
+
+    sl1.addItem(ar1);
+    sl1.addItem(ar2);
+
+    ASSERT_EQ(0, sl1.getBoughtItemsNumber());
+
+    sl1.toggleCheckItem(ar1);
+
+    ASSERT_EQ(1, sl1.getBoughtItemsNumber());
+
+    sl1.toggleCheckItem(ar2);
+
+    ASSERT_EQ(2, sl1.getBoughtItemsNumber());
+
+    sl1.removeItem(ar1);
+
+    ASSERT_EQ(1, sl1.getBoughtItemsNumber());
+
+    sl1.toggleCheckItem(ar2);
+
+    ASSERT_EQ(0, sl1.getBoughtItemsNumber());
+
+    sl1.removeItem(ar2);
+
+    ASSERT_EQ(0, sl1.getBoughtItemsNumber());
+}
