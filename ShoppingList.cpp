@@ -21,11 +21,10 @@ void ShoppingList::removeItem(const Articolo &ar) {
     auto itr = shopList.find(ar.getName());
     if (itr != shopList.end()) {
         shopList[ar.getName()] -= 1;
+        if (artList.find(ar.getName())->second.getCheck())
+            boughtItems--;
         if (shopList[ar.getName()] == 0) {
             shopList.erase(ar.getName());
-            auto artItr = artList.find(ar.getName());
-            if (artItr->second.getCheck())
-                boughtItems--;
             artList.erase(ar.getName());
         }
         notify();
@@ -44,9 +43,18 @@ void ShoppingList::toggleCheckItem(const Articolo &ar) {
     if (itr != shopList.end()) {
         auto art = artList.find(ar.getName());
         if (art->second.getCheck())
-            boughtItems--;
+            boughtItems -= shopList.find(ar.getName())->second;
         else
-            boughtItems++;
+            boughtItems += shopList.find(ar.getName())->second;
         art->second.toggleCheck();
     }
+}
+
+int ShoppingList::getItemsToBuyNumber() const {
+    int num = 0;
+    for (auto &i : artList) {
+        if (!i.second.getCheck())
+            num += shopList.find(i.first)->second;
+    }
+    return num;
 }

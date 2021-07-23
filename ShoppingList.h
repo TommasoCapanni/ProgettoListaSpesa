@@ -32,6 +32,8 @@ public:
 
     int getBoughtItemsNumber() const { return boughtItems; }
 
+    int getItemsToBuyNumber() const;
+
     void attach(Observer *o) { obs.push_back(o); }
 
     void detach(Observer *o) { obs.remove(o); }
