@@ -26,7 +26,6 @@ private:
     std::string name;
     std::string category;
     bool hasBeenTaken;
-
 };
 
 #endif //PROGETTOLISTASPESA_ARTICOLO_H

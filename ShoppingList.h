@@ -28,6 +28,10 @@ public:
 
     std::map<std::string, Articolo> getArticleList() const { return artList; }
 
+    int getListSize() const { return shopList.size(); }
+
+    int getBoughtItemsNumber() const { return boughtItems; }
+
     void attach(Observer *o) { obs.push_back(o); }
 
     void detach(Observer *o) { obs.remove(o); }
@@ -44,6 +48,7 @@ private:
     std::map<std::string, int> shopList;
     std::list<Observer *> obs;
     std::map<std::string, Articolo> artList;
+    int boughtItems;
 };
 
 
